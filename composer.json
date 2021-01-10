@@ -1,0 +1,24 @@
+{
+    "name": "allyans3/dmarket-auth-api",
+    "description": "DMarket Unofficial Auth API",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Allyans3",
+            "email": "a.sylenok@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-json": "*",
+        "ext-curl": "*",
+        "paragonie/sodium_compat": "^1.14",
+        "psy/psysh": "^0.10.4",
+        "nesbot/carbon": "^2.43"
+    },
+    "autoload": {
+        "psr-4": {
+            "DMarketAuthApi\\": "src/"
+        }
+    }
+}
