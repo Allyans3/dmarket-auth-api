@@ -28,4 +28,4 @@ $api = new DMarketAuthApi($publicKey, $secretKey);
 Documentation
 -------------
 
-https://docs.dmarket.com/v1/swagger.html?_gl=1*11y6mqo*_ga*MzA5OTg5NDYuMTYwNTgyODc2Nw..*_ga_J73817TZWR*MTYxMDI5NzU4OC45MS4wLjE2MTAyOTc1OTAuNTg.
+https://docs.dmarket.com/v1/swagger.html
