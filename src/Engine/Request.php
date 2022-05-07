@@ -22,6 +22,9 @@ abstract class Request
         $this->ch = curl_init();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function dmarketHttpRequest($publicKey, $secretKey, $postParams = [], $proxy = [])
     {
         if (!isset($this->ch)) {
@@ -63,6 +66,9 @@ abstract class Request
         return new $class($data);
     }
 
+    /**
+     * @throws \SodiumException
+     */
     private function generateSignature($privateKey, $method, $route, $timestamp, array $postParams = []): string
     {
         if (!empty($postParams))

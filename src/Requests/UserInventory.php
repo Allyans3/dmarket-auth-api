@@ -22,6 +22,9 @@ class UserInventory extends Request implements RequestInterface
         return self::URL . (!empty($this->queryPath) ? '?' . $this->queryPath : '');
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function call(string $publicKey, string $secretKey, array $proxy = [])
     {
         return $this->dmarketHttpRequest($publicKey, $secretKey, [], $proxy);

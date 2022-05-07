@@ -16,6 +16,9 @@ class WithdrawAssets extends Request implements RequestInterface
         return self::URL;
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function call(string $publicKey, string $secretKey, array $postParams = [], array $proxy = [])
     {
         return $this->dmarketHttpRequest($publicKey, $secretKey, $postParams, $proxy);

@@ -4,6 +4,7 @@ namespace DMarketAuthApi;
 
 use DMarketAuthApi\Requests\AggregatedPrices;
 use DMarketAuthApi\Requests\BuyOffers;
+use DMarketAuthApi\Requests\ClosedUserOffers;
 use DMarketAuthApi\Requests\ClosedUserTargets;
 use DMarketAuthApi\Requests\CreateUserOffers;
 use DMarketAuthApi\Requests\CreateUserTargets;
@@ -36,6 +37,9 @@ class DMarketAuthApi
 
 
     //Account
+    /**
+     * @throws \SodiumException
+     */
     public function getUserProfile(array $proxy = [])
     {
         $class = new UserProfile();
@@ -43,6 +47,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getUserBalance(array $proxy = [])
     {
         $class = new UserBalance();
@@ -53,6 +60,9 @@ class DMarketAuthApi
 
 
     //Sell Items
+    /**
+     * @throws \SodiumException
+     */
     public function depositAssets(array $postParams, array $proxy = [])
     {
         $class = new DepositAssets();
@@ -60,6 +70,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getDepositStatus(string $depositId, array $proxy = [])
     {
         $class = new DepositStatus($depositId);
@@ -67,6 +80,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getUserOffers(array $queries = [], array $proxy = [])
     {
         $class = new UserOffers($queries);
@@ -74,6 +90,19 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
+    public function getClosedUserOffers(array $queries = [], array $proxy = [])
+    {
+        $class = new ClosedUserOffers($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
     public function createUserOffers(array $postParams, array $proxy = [])
     {
         $class = new CreateUserOffers();
@@ -81,6 +110,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function editUserOffers(array $postParams, array $proxy = [])
     {
         $class = new EditUserOffers();
@@ -88,6 +120,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getMarketItems(array $queries, array $proxy = [])
     {
         $class = new MarketItems($queries);
@@ -95,6 +130,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function deleteOffers(array $postParams, array $proxy = [])
     {
         $class = new DeleteOffers();
@@ -105,6 +143,9 @@ class DMarketAuthApi
 
 
     //Inventory/items
+    /**
+     * @throws \SodiumException
+     */
     public function getUserInventory(array $queries = [], array $proxy = [])
     {
         $class = new UserInventory($queries);
@@ -112,6 +153,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function syncUserInventory(array $postParams, array $proxy = [])
     {
         $class = new SyncUserInventory();
@@ -119,6 +163,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function withdrawAssets(array $postParams, array $proxy = [])
     {
         $class = new WithdrawAssets();
@@ -126,6 +173,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getUserItems(array $queries, array $proxy = [])
     {
         $class = new UserItems($queries);
@@ -136,6 +186,9 @@ class DMarketAuthApi
 
 
     //Buy items
+    /**
+     * @throws \SodiumException
+     */
     public function getOffersByTitle(array $queries, array $proxy = [])
     {
         $class = new OffersByTitle($queries);
@@ -143,6 +196,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getAggregatedPrices(array $queries, array $proxy = [])
     {
         $class = new AggregatedPrices($queries);
@@ -150,6 +206,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getUserTargets(array $queries = [], array $proxy = [])
     {
         $class = new UserTargets($queries);
@@ -157,6 +216,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getClosedUserTargets(array $queries = [], array $proxy = [])
     {
         $class = new ClosedUserTargets($queries);
@@ -164,6 +226,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function createUserTargets(array $postParams, array $proxy = [])
     {
         $class = new CreateUserTargets();
@@ -171,6 +236,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function deleteUserTargets(array $postParams, array $proxy = [])
     {
         $class = new DeleteUserTargets();
@@ -178,6 +246,9 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function buyOffers(array $postParams, array $proxy = [])
     {
         $class = new BuyOffers();

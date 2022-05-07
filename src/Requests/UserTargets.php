@@ -19,6 +19,9 @@ class UserTargets extends Request implements RequestInterface
         $this->queryPath = http_build_query($queries);
     }
 
+    /**
+     * @throws \SodiumException
+     */
     public function getUrl(): string
     {
         return self::URL . (!empty($this->queryPath) ? '?' . $this->queryPath : '');

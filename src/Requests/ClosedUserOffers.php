@@ -1,15 +1,13 @@
 <?php
 
-
 namespace DMarketAuthApi\Requests;
-
 
 use DMarketAuthApi\Engine\Request;
 use DMarketAuthApi\Interfaces\RequestInterface;
 
-class AggregatedPrices extends Request implements RequestInterface
+class ClosedUserOffers extends Request implements RequestInterface
 {
-    const URL = "/price-aggregator/v1/aggregated-prices";
+    const URL = "/marketplace-api/v1/user-offers/closed";
 
     private string $method = 'GET';
     private string $queryPath = '';
