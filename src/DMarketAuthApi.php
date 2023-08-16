@@ -279,7 +279,7 @@ class DMarketAuthApi
     /**
      * @throws \SodiumException
      */
-    public function getLastSales(array $queries = [], array $proxy = [])
+    public function getLastSales(array $queries, array $proxy = [])
     {
         $class = new LastSales($queries);
 
