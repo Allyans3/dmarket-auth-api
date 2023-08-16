@@ -1,15 +1,13 @@
 <?php
 
-
 namespace DMarketAuthApi\Requests;
-
 
 use DMarketAuthApi\Engine\Request;
 use DMarketAuthApi\Interfaces\RequestInterface;
 
-class UserOffers extends Request implements RequestInterface
+class CustomizedFees extends Request implements RequestInterface
 {
-    const URL = "/marketplace-api/v1/user-offers";
+    const URL = "/exchange/v1/customized-fees";
 
     private string $method = 'GET';
     private string $queryPath;
