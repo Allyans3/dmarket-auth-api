@@ -1,8 +1,6 @@
 <?php
 
-
 namespace DMarketAuthApi\Requests;
-
 
 use DMarketAuthApi\Engine\Request;
 use DMarketAuthApi\Interfaces\RequestInterface;

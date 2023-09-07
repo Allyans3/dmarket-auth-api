@@ -12,7 +12,6 @@
         "ext-json": "*",
         "ext-curl": "*",
         "paragonie/sodium_compat": "^1.14",
-        "psy/psysh": "^0.10.4",
         "nesbot/carbon": "^2.43"
     },
     "autoload": {

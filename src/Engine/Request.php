@@ -3,7 +3,7 @@
 namespace DMarketAuthApi\Engine;
 
 use Carbon\Carbon;
-use Psy\Exception\RuntimeException;
+use RuntimeException;
 
 abstract class Request
 {
