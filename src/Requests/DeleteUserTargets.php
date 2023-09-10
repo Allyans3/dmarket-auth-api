@@ -9,7 +9,7 @@ class DeleteUserTargets extends Request implements RequestInterface
 {
     const URL = "/marketplace-api/v1/user-targets/delete";
 
-    private string $method = 'DELETE';
+    private string $method = 'POST';
 
     public function getUrl(): string
     {
