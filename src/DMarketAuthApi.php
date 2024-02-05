@@ -14,6 +14,7 @@ use DMarketAuthApi\Requests\DeleteUserTargets;
 use DMarketAuthApi\Requests\DepositAssets;
 use DMarketAuthApi\Requests\DepositStatus;
 use DMarketAuthApi\Requests\EditUserOffers;
+use DMarketAuthApi\Requests\EditUserTargets;
 use DMarketAuthApi\Requests\LastSales;
 use DMarketAuthApi\Requests\MarketItems;
 use DMarketAuthApi\Requests\OffersByTitle;
@@ -252,6 +253,17 @@ class DMarketAuthApi
 
         return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
     }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function editUserTargets(array $postParams, array $proxy = [])
+    {
+        $class = new EditUserTargets();
+
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+    }
+
 
     /**
      * @throws \SodiumException
