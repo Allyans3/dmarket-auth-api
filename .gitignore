@@ -113,3 +113,4 @@ $RECYCLE.BIN/
 /example/*
 
 composer.lock
+index.php

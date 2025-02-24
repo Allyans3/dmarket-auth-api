@@ -5,21 +5,23 @@ namespace DMarketAuthApi\Requests;
 use DMarketAuthApi\Engine\Request;
 use DMarketAuthApi\Interfaces\RequestInterface;
 
-class LastSales extends Request implements RequestInterface
+class TargetsByTitle extends Request implements RequestInterface
 {
-    const URL = "/trade-aggregator/v1/last-sales";
+    const URL = "/marketplace-api/v1/targets-by-title/%s/%s";
 
+    private string $gameId;
+    private string $title;
     private string $method = 'GET';
-    private string $queryPath;
 
-    public function __construct($queries)
+    public function __construct($gameId, $title)
     {
-        $this->queryPath = http_build_query($queries);
+        $this->gameId = $gameId;
+        $this->title = $title;
     }
 
     public function getUrl(): string
     {
-        return self::URL . (!empty($this->queryPath) ? '?' . $this->queryPath : '');
+        return sprintf(self::URL, $this->gameId, $this->title);
     }
 
     /**

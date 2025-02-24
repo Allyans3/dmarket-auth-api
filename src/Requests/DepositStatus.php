@@ -7,7 +7,7 @@ use DMarketAuthApi\Interfaces\RequestInterface;
 
 class DepositStatus extends Request implements RequestInterface
 {
-    const URL = "/marketplace-api/v1/deposit-status/";
+    const URL = "/marketplace-api/v1/deposit-status/%s";
 
     private string $depositId;
     private string $method = 'GET';
@@ -19,15 +19,15 @@ class DepositStatus extends Request implements RequestInterface
 
     public function getUrl(): string
     {
-        return self::URL . $this->depositId;
+        return sprintf(self::URL, $this->depositId);
     }
 
     /**
      * @throws \SodiumException
      */
-    public function call(string $publicKey, string $secretKey, array $proxy = [])
+    public function call(string $publicKey, string $secretKey, bool $detailed = false, array $proxy = [])
     {
-        return $this->dmarketHttpRequest($publicKey, $secretKey, [], $proxy);
+        return $this->dmarketHttpRequest($publicKey, $secretKey, [], $detailed, $proxy);
     }
 
     public function getRequestMethod(): string

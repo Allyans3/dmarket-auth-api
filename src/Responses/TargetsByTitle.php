@@ -4,7 +4,7 @@ namespace DMarketAuthApi\Responses;
 
 use DMarketAuthApi\Interfaces\ResponseInterface;
 
-class UserOffers implements ResponseInterface
+class TargetsByTitle implements ResponseInterface
 {
     private $data;
     private $detailed;

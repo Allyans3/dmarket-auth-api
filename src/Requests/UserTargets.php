@@ -27,9 +27,9 @@ class UserTargets extends Request implements RequestInterface
         return self::URL . (!empty($this->queryPath) ? '?' . $this->queryPath : '');
     }
 
-    public function call(string $publicKey, string $secretKey, array $proxy = [])
+    public function call(string $publicKey, string $secretKey, bool $detailed = false, array $proxy = [])
     {
-        return $this->dmarketHttpRequest($publicKey, $secretKey, [], $proxy);
+        return $this->dmarketHttpRequest($publicKey, $secretKey, [], $detailed, $proxy);
     }
 
     public function getRequestMethod(): string

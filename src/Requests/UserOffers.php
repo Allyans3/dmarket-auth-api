@@ -27,9 +27,9 @@ class UserOffers extends Request implements RequestInterface
     /**
      * @throws \SodiumException
      */
-    public function call(string $publicKey, string $secretKey, array $proxy = [])
+    public function call(string $publicKey, string $secretKey, bool $detailed = false, array $proxy = [])
     {
-        return $this->dmarketHttpRequest($publicKey, $secretKey, [], $proxy);
+        return $this->dmarketHttpRequest($publicKey, $secretKey, [], $detailed, $proxy);
     }
 
     public function getRequestMethod(): string

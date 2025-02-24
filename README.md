@@ -29,6 +29,9 @@ Methods
 -------------------
 
 ```php
+// Used to get detailed response
+$api->detailed()->getUserProfile()
+
 // Account
 $api->getUserProfile(array $proxy = [])
 $api->getUserBalance(array $proxy = [])
@@ -54,6 +57,7 @@ $api->getClosedUserOffers(array $queries = [], array $proxy = [])
 
 // Buy items
 $api->getOffersByTitle(array $queries, array $proxy = [])
+$api->getTargetsByTitle(string $gameId, string $title, array $proxy = [])
 $api->getAggregatedPrices(array $queries, array $proxy = [])
 $api->getUserTargets(array $queries = [], array $proxy = [])
 $api->getClosedUserTargets(array $queries = [], array $proxy = [])

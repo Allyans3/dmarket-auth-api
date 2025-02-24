@@ -21,9 +21,9 @@ class CreateUserTargets extends Request implements RequestInterface
     /**
      * @throws \SodiumException
      */
-    public function call(string $publicKey, string $secretKey, array $postParams = [], array $proxy = [])
+    public function call(string $publicKey, string $secretKey, array $postParams = [], bool $detailed = false, array $proxy = [])
     {
-        return $this->dmarketHttpRequest($publicKey, $secretKey, $postParams, $proxy);
+        return $this->dmarketHttpRequest($publicKey, $secretKey, $postParams, $detailed, $proxy);
     }
 
     public function getRequestMethod(): string

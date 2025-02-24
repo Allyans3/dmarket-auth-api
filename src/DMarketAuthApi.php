@@ -19,6 +19,7 @@ use DMarketAuthApi\Requests\LastSales;
 use DMarketAuthApi\Requests\MarketItems;
 use DMarketAuthApi\Requests\OffersByTitle;
 use DMarketAuthApi\Requests\SyncUserInventory;
+use DMarketAuthApi\Requests\TargetsByTitle;
 use DMarketAuthApi\Requests\UserBalance;
 use DMarketAuthApi\Requests\UserInventory;
 use DMarketAuthApi\Requests\UserItems;
@@ -32,10 +33,21 @@ class DMarketAuthApi
     private string $publicKey;
     private string $secretKey;
 
+    private bool $detailed = false;
+
     public function __construct($publicKey, $secretKey)
     {
         $this->publicKey = $publicKey;
         $this->secretKey = $secretKey;
+    }
+
+    /**
+     * @return $this
+     */
+    public function detailed(): DMarketAuthApi
+    {
+        $this->detailed = true;
+        return $this;
     }
 
 
@@ -47,7 +59,7 @@ class DMarketAuthApi
     {
         $class = new UserProfile();
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -57,7 +69,7 @@ class DMarketAuthApi
     {
         $class = new UserBalance();
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
 
@@ -70,7 +82,7 @@ class DMarketAuthApi
     {
         $class = new DepositAssets();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -80,7 +92,7 @@ class DMarketAuthApi
     {
         $class = new DepositStatus($depositId);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -90,7 +102,7 @@ class DMarketAuthApi
     {
         $class = new UserOffers($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -100,7 +112,7 @@ class DMarketAuthApi
     {
         $class = new CreateUserOffers();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -110,7 +122,7 @@ class DMarketAuthApi
     {
         $class = new EditUserOffers();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -120,7 +132,7 @@ class DMarketAuthApi
     {
         $class = new MarketItems($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -130,7 +142,7 @@ class DMarketAuthApi
     {
         $class = new DeleteOffers();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
 
@@ -143,7 +155,7 @@ class DMarketAuthApi
     {
         $class = new UserInventory($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -153,7 +165,7 @@ class DMarketAuthApi
     {
         $class = new SyncUserInventory();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -163,7 +175,7 @@ class DMarketAuthApi
     {
         $class = new WithdrawAssets();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -173,7 +185,7 @@ class DMarketAuthApi
     {
         $class = new UserItems($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -183,7 +195,7 @@ class DMarketAuthApi
     {
         $class = new CustomizedFees($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
 
@@ -197,7 +209,7 @@ class DMarketAuthApi
     {
         $class = new ClosedUserOffers($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
 
@@ -211,7 +223,17 @@ class DMarketAuthApi
     {
         $class = new OffersByTitle($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function getTargetsByTitle(string $gameId, string $title, array $proxy = [])
+    {
+        $class = new TargetsByTitle($gameId, $title);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -221,7 +243,7 @@ class DMarketAuthApi
     {
         $class = new AggregatedPrices($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -231,7 +253,7 @@ class DMarketAuthApi
     {
         $class = new UserTargets($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -241,7 +263,7 @@ class DMarketAuthApi
     {
         $class = new ClosedUserTargets($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -251,7 +273,7 @@ class DMarketAuthApi
     {
         $class = new CreateUserTargets();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -261,7 +283,7 @@ class DMarketAuthApi
     {
         $class = new EditUserTargets();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
 
@@ -272,7 +294,7 @@ class DMarketAuthApi
     {
         $class = new DeleteUserTargets();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -282,7 +304,7 @@ class DMarketAuthApi
     {
         $class = new BuyOffers();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
 
@@ -295,6 +317,6 @@ class DMarketAuthApi
     {
         $class = new LastSales($queries);
 
-        return $class->call($this->publicKey, $this->secretKey, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 }
