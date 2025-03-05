@@ -3,6 +3,7 @@
 namespace DMarketAuthApi;
 
 use DMarketAuthApi\Requests\AggregatedPrices;
+use DMarketAuthApi\Requests\AppraiseTargets;
 use DMarketAuthApi\Requests\BuyOffers;
 use DMarketAuthApi\Requests\ClosedUserOffers;
 use DMarketAuthApi\Requests\ClosedUserTargets;
@@ -318,5 +319,15 @@ class DMarketAuthApi
         $class = new LastSales($queries);
 
         return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+
+
+    // Unofficial
+    public function appraiseTargets(array $postParams, array $proxy = [])
+    {
+        $class = new AppraiseTargets();
+
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 }
