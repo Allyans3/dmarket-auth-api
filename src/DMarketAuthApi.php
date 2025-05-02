@@ -16,6 +16,7 @@ use DMarketAuthApi\Requests\DepositAssets;
 use DMarketAuthApi\Requests\DepositStatus;
 use DMarketAuthApi\Requests\EditUserOffers;
 use DMarketAuthApi\Requests\EditUserTargets;
+use DMarketAuthApi\Requests\History;
 use DMarketAuthApi\Requests\LastSales;
 use DMarketAuthApi\Requests\MarketItems;
 use DMarketAuthApi\Requests\OffersByTitle;
@@ -329,5 +330,12 @@ class DMarketAuthApi
         $class = new AppraiseTargets();
 
         return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
+    }
+
+    public function getHistory(array $queries = [], array $proxy = [])
+    {
+        $class = new History($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 }
