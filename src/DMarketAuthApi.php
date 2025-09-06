@@ -8,6 +8,7 @@ use DMarketAuthApi\Requests\BuyOffers;
 use DMarketAuthApi\Requests\ClosedUserOffers;
 use DMarketAuthApi\Requests\ClosedUserTargets;
 use DMarketAuthApi\Requests\CreateUserOffers;
+use DMarketAuthApi\Requests\CreateUserOffersV2;
 use DMarketAuthApi\Requests\CreateUserTargets;
 use DMarketAuthApi\Requests\CustomizedFees;
 use DMarketAuthApi\Requests\DeleteOffers;
@@ -325,6 +326,13 @@ class DMarketAuthApi
 
 
     // Unofficial
+
+    /**
+     * @param array $postParams
+     * @param array $proxy
+     * @return mixed
+     * @throws \SodiumException
+     */
     public function appraiseTargets(array $postParams, array $proxy = [])
     {
         $class = new AppraiseTargets();
@@ -332,10 +340,29 @@ class DMarketAuthApi
         return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
+    /**
+     * @param array $queries
+     * @param array $proxy
+     * @return mixed
+     * @throws \SodiumException
+     */
     public function getHistory(array $queries = [], array $proxy = [])
     {
         $class = new History($queries);
 
         return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @param array $postParams
+     * @param array $proxy
+     * @return mixed
+     * @throws \SodiumException
+     */
+    public function createUserOffersV2(array $postParams, array $proxy = [])
+    {
+        $class = new CreateUserOffersV2();
+
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 }
