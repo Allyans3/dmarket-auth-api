@@ -3,6 +3,7 @@
 namespace DMarketAuthApi;
 
 use DMarketAuthApi\Requests\AggregatedPrices;
+use DMarketAuthApi\Requests\AggregatedPricesV2;
 use DMarketAuthApi\Requests\AppraiseTargets;
 use DMarketAuthApi\Requests\BuyOffers;
 use DMarketAuthApi\Requests\ClosedUserOffers;
@@ -247,6 +248,16 @@ class DMarketAuthApi
         $class = new AggregatedPrices($queries);
 
         return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function getAggregatedPricesV2(array $postParams, array $proxy = [])
+    {
+        $class = new AggregatedPricesV2();
+
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
