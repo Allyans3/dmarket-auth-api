@@ -18,6 +18,7 @@ use DMarketAuthApi\Requests\DepositAssets;
 use DMarketAuthApi\Requests\DepositStatus;
 use DMarketAuthApi\Requests\EditUserOffers;
 use DMarketAuthApi\Requests\EditUserTargets;
+use DMarketAuthApi\Requests\Fee;
 use DMarketAuthApi\Requests\History;
 use DMarketAuthApi\Requests\LastSales;
 use DMarketAuthApi\Requests\MarketItems;
@@ -375,5 +376,18 @@ class DMarketAuthApi
         $class = new CreateUserOffersV2();
 
         return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @param array $queries
+     * @param array $proxy
+     * @return mixed
+     * @throws \SodiumException
+     */
+    public function getFee(array $queries = [], array $proxy = [])
+    {
+        $class = new Fee($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 }
