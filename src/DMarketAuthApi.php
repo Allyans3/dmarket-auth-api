@@ -5,6 +5,7 @@ namespace DMarketAuthApi;
 use DMarketAuthApi\Requests\AggregatedPrices;
 use DMarketAuthApi\Requests\AggregatedPricesV2;
 use DMarketAuthApi\Requests\AppraiseTargets;
+use DMarketAuthApi\Requests\CreateBatchOffers;
 use DMarketAuthApi\Requests\BuyOffers;
 use DMarketAuthApi\Requests\ClosedUserOffers;
 use DMarketAuthApi\Requests\ClosedUserTargets;
@@ -12,6 +13,7 @@ use DMarketAuthApi\Requests\CreateUserOffers;
 use DMarketAuthApi\Requests\CreateUserOffersV2;
 use DMarketAuthApi\Requests\CreateUserTargets;
 use DMarketAuthApi\Requests\CustomizedFees;
+use DMarketAuthApi\Requests\DeleteBatchOffers;
 use DMarketAuthApi\Requests\DeleteOffers;
 use DMarketAuthApi\Requests\DeleteUserTargets;
 use DMarketAuthApi\Requests\DepositAssets;
@@ -25,6 +27,7 @@ use DMarketAuthApi\Requests\MarketItems;
 use DMarketAuthApi\Requests\OffersByTitle;
 use DMarketAuthApi\Requests\SyncUserInventory;
 use DMarketAuthApi\Requests\TargetsByTitle;
+use DMarketAuthApi\Requests\UpdateBatchOffers;
 use DMarketAuthApi\Requests\UserBalance;
 use DMarketAuthApi\Requests\UserInventory;
 use DMarketAuthApi\Requests\UserItems;
@@ -108,6 +111,36 @@ class DMarketAuthApi
         $class = new UserOffers($queries);
 
         return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function createBatchOffers(array $postParams, array $proxy = [])
+    {
+        $class = new CreateBatchOffers();
+
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function updateBatchOffers(array $patchParams, array $proxy = [])
+    {
+        $class = new UpdateBatchOffers();
+
+        return $class->call($this->publicKey, $this->secretKey, $patchParams, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function deleteBatchOffers(array $patchParams, array $proxy = [])
+    {
+        $class = new DeleteBatchOffers();
+
+        return $class->call($this->publicKey, $this->secretKey, $patchParams, $this->detailed, $proxy)->response();
     }
 
     /**
@@ -315,11 +348,11 @@ class DMarketAuthApi
     /**
      * @throws \SodiumException
      */
-    public function buyOffers(array $postParams, array $proxy = [])
+    public function buyOffers(array $patchParams, array $proxy = [])
     {
         $class = new BuyOffers();
 
-        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $patchParams, $this->detailed, $proxy)->response();
     }
 
 
