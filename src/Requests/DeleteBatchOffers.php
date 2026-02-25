@@ -9,7 +9,7 @@ class DeleteBatchOffers extends Request implements RequestInterface
 {
     const URL = "/marketplace-api/v2/offers:batchDelete";
 
-    private string $method = 'PATCH';
+    private string $method = 'POST';
 
     public function getUrl(): string
     {

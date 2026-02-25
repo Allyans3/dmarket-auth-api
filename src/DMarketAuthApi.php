@@ -126,21 +126,21 @@ class DMarketAuthApi
     /**
      * @throws \SodiumException
      */
-    public function updateBatchOffers(array $patchParams, array $proxy = [])
+    public function updateBatchOffers(array $postParams, array $proxy = [])
     {
         $class = new UpdateBatchOffers();
 
-        return $class->call($this->publicKey, $this->secretKey, $patchParams, $this->detailed, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**
      * @throws \SodiumException
      */
-    public function deleteBatchOffers(array $patchParams, array $proxy = [])
+    public function deleteBatchOffers(array $postParams, array $proxy = [])
     {
         $class = new DeleteBatchOffers();
 
-        return $class->call($this->publicKey, $this->secretKey, $patchParams, $this->detailed, $proxy)->response();
+        return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
     }
 
     /**

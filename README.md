@@ -41,8 +41,8 @@ $api->depositAssets(array $postParams, array $proxy = [])
 $api->getDepositStatus(string $depositId, array $proxy = [])
 $api->getUserOffers(array $queries = [], array $proxy = [])
 $api->createBatchOffers(array $postParams, array $proxy = [])
-$api->updateBatchOffers(array $patchParams, array $proxy = [])
-$api->deleteBatchOffers(array $patchParams, array $proxy = [])
+$api->updateBatchOffers(array $postParams, array $proxy = [])
+$api->deleteBatchOffers(array $postParams, array $proxy = [])
 $api->getMarketItems(array $queries, array $proxy = [])
 
 ️️❗️//Old endpoints will be deprecated in 2–3 weeks. So please make migration in advance.
