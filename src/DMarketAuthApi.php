@@ -30,10 +30,12 @@ use DMarketAuthApi\Requests\TargetsByTitle;
 use DMarketAuthApi\Requests\UpdateBatchOffers;
 use DMarketAuthApi\Requests\UserBalance;
 use DMarketAuthApi\Requests\UserInventory;
+use DMarketAuthApi\Requests\UserInventoryV2;
 use DMarketAuthApi\Requests\UserItems;
 use DMarketAuthApi\Requests\UserOffers;
 use DMarketAuthApi\Requests\UserProfile;
 use DMarketAuthApi\Requests\UserTargets;
+use DMarketAuthApi\Requests\UserTargetsV2;
 use DMarketAuthApi\Requests\WithdrawAssets;
 
 class DMarketAuthApi
@@ -199,6 +201,16 @@ class DMarketAuthApi
     /**
      * @throws \SodiumException
      */
+    public function getUserInventoryV2(array $queries = [], array $proxy = [])
+    {
+        $class = new UserInventoryV2($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
     public function syncUserInventory(array $postParams, array $proxy = [])
     {
         $class = new SyncUserInventory();
@@ -300,6 +312,16 @@ class DMarketAuthApi
     public function getUserTargets(array $queries = [], array $proxy = [])
     {
         $class = new UserTargets($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function getUserTargetsV2(array $queries = [], array $proxy = [])
+    {
+        $class = new UserTargetsV2($queries);
 
         return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
