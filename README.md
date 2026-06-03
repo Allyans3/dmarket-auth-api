@@ -51,7 +51,8 @@ $api->editUserOffers(array $postParams, array $proxy = [])
 $api->deleteOffers(array $postParams, array $proxy = [])
 
 // Inventory/items
-$api->getUserInventory(array $queries = [], array $proxy = [])
+$api->getUserInventory(array $queries = [], array $proxy = []) ️❗️// Deprecated old endpoint
+$api->getUserInventoryV2(array $queries = [], array $proxy = [])
 $api->syncUserInventory(array $postParams, array $proxy = [])
 $api->withdrawAssets(array $postParams, array $proxy = [])
 $api->getUserItems(array $queries, array $proxy = [])
@@ -65,7 +66,8 @@ $api->getOffersByTitle(array $queries, array $proxy = [])
 $api->getTargetsByTitle(string $gameId, string $title, array $proxy = [])
 $api->getAggregatedPrices(array $queries, array $proxy = [])
 $api->getAggregatedPricesV2(array $postParams, array $proxy = [])
-$api->getUserTargets(array $queries = [], array $proxy = [])
+$api->getUserTargets(array $queries = [], array $proxy = []) ️️❗️// Deprecated old endpoint
+$api->getUserTargetsV2(array $queries = [], array $proxy = [])
 $api->getClosedUserTargets(array $queries = [], array $proxy = [])
 $api->createUserTargets(array $postParams, array $proxy = [])
 $api->deleteUserTargets(array $postParams, array $proxy = [])
