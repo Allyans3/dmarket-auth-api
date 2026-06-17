@@ -28,6 +28,7 @@ use DMarketAuthApi\Requests\OffersByTitle;
 use DMarketAuthApi\Requests\SyncUserInventory;
 use DMarketAuthApi\Requests\TargetsByTitle;
 use DMarketAuthApi\Requests\UpdateBatchOffers;
+use DMarketAuthApi\Requests\UserAssets;
 use DMarketAuthApi\Requests\UserBalance;
 use DMarketAuthApi\Requests\UserInventory;
 use DMarketAuthApi\Requests\UserInventoryV2;
@@ -445,4 +446,18 @@ class DMarketAuthApi
 
         return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
+
+    /**
+     * @param array $queries
+     * @param array $proxy
+     * @return mixed
+     * @throws \SodiumException
+     */
+    public function getUserAssets(array $queries, array $proxy = [])
+    {
+        $class = new UserAssets($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
 }
