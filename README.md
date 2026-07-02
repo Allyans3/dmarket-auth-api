@@ -40,10 +40,10 @@ $api->getUserBalance(array $proxy = [])
 $api->depositAssets(array $postParams, array $proxy = [])
 $api->getDepositStatus(string $depositId, array $proxy = [])
 $api->getUserOffers(array $queries = [], array $proxy = []) ️️❗️// Deprecated old endpoint
-$api->getUserOffersV2(array $queries = [], array $proxy = []) ️️❇️// New endpoint
-$api->createBatchOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
-$api->updateBatchOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
-$api->deleteBatchOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
+$api->getUserOffersV2(array $queries = [], array $proxy = []) ️️🔸// New endpoint
+$api->createBatchOffers(array $postParams, array $proxy = []) ️️🔸// New endpoint
+$api->updateBatchOffers(array $postParams, array $proxy = []) ️️🔸// New endpoint
+$api->deleteBatchOffers(array $postParams, array $proxy = []) ️️🔸// New endpoint
 $api->createUserOffers(array $postParams, array $proxy = []) ️️❗️// Deprecated old endpoint
 $api->editUserOffers(array $postParams, array $proxy = []) ️️❗️// Deprecated old endpoint
 $api->deleteOffers(array $postParams, array $proxy = []) ️️❗️// Deprecated old endpoint
@@ -51,7 +51,7 @@ $api->getMarketItems(array $queries, array $proxy = []) ️️❗️// Deprecate
 
 // Inventory/items
 $api->getUserInventory(array $queries = [], array $proxy = []) ️❗️// Deprecated old endpoint
-$api->getUserInventoryV2(array $queries = [], array $proxy = []) ️️❇️// New endpoint
+$api->getUserInventoryV2(array $queries = [], array $proxy = []) ️️🔸// New endpoint
 $api->syncUserInventory(array $postParams, array $proxy = [])
 $api->withdrawAssets(array $postParams, array $proxy = [])
 $api->getUserItems(array $queries, array $proxy = [])
@@ -64,13 +64,13 @@ $api->getClosedUserOffers(array $queries = [], array $proxy = [])
 $api->getOffersByTitle(array $queries, array $proxy = []) ️️❗️// Deprecated old endpoint
 $api->getTargetsByTitle(string $gameId, string $title, array $proxy = [])
 $api->getAggregatedPrices(array $queries, array $proxy = [])
-$api->getAggregatedPricesV2(array $postParams, array $proxy = []) ️️❇️// New endpoint
+$api->getAggregatedPricesV2(array $postParams, array $proxy = []) ️️🔸// New endpoint
 $api->getUserTargets(array $queries = [], array $proxy = []) ️️❗️// Deprecated old endpoint
-$api->getUserTargetsV2(array $queries = [], array $proxy = []) ️️❇️// New endpoint
+$api->getUserTargetsV2(array $queries = [], array $proxy = []) ️️🔸// New endpoint
 $api->getClosedUserTargets(array $queries = [], array $proxy = [])
 $api->createUserTargets(array $postParams, array $proxy = [])
 $api->deleteUserTargets(array $postParams, array $proxy = [])
-$api->getMarketplaceOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
+$api->getMarketplaceOffers(array $postParams, array $proxy = []) ️️🔸// New endpoint
 $api->buyOffers(array $patchParams, array $proxy = [])
 
 // Aggregator
