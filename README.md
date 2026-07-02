@@ -11,7 +11,7 @@ Run this text in console to install this package:
 composer require allyans3/dmarket-auth-api
 ```
 
-This package currently offers 23 API calls you can make to DMarket.
+This package currently offers 38 API calls you can make to DMarket.
 
 
 Creating new object
@@ -39,20 +39,19 @@ $api->getUserBalance(array $proxy = [])
 // Sell Items
 $api->depositAssets(array $postParams, array $proxy = [])
 $api->getDepositStatus(string $depositId, array $proxy = [])
-$api->getUserOffers(array $queries = [], array $proxy = [])
-$api->createBatchOffers(array $postParams, array $proxy = [])
-$api->updateBatchOffers(array $postParams, array $proxy = [])
-$api->deleteBatchOffers(array $postParams, array $proxy = [])
-$api->getMarketItems(array $queries, array $proxy = [])
-
-️️❗️//Old endpoints will be deprecated in 2–3 weeks. So please make migration in advance.
-$api->createUserOffers(array $postParams, array $proxy = [])
-$api->editUserOffers(array $postParams, array $proxy = [])
-$api->deleteOffers(array $postParams, array $proxy = [])
+$api->getUserOffers(array $queries = [], array $proxy = []) ️️❗️// Deprecated old endpoint
+$api->getUserOffersV2(array $queries = [], array $proxy = []) ️️❇️// New endpoint
+$api->createBatchOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
+$api->updateBatchOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
+$api->deleteBatchOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
+$api->createUserOffers(array $postParams, array $proxy = []) ️️❗️// Deprecated old endpoint
+$api->editUserOffers(array $postParams, array $proxy = []) ️️❗️// Deprecated old endpoint
+$api->deleteOffers(array $postParams, array $proxy = []) ️️❗️// Deprecated old endpoint
+$api->getMarketItems(array $queries, array $proxy = []) ️️❗️// Deprecated old endpoint
 
 // Inventory/items
 $api->getUserInventory(array $queries = [], array $proxy = []) ️❗️// Deprecated old endpoint
-$api->getUserInventoryV2(array $queries = [], array $proxy = [])
+$api->getUserInventoryV2(array $queries = [], array $proxy = []) ️️❇️// New endpoint
 $api->syncUserInventory(array $postParams, array $proxy = [])
 $api->withdrawAssets(array $postParams, array $proxy = [])
 $api->getUserItems(array $queries, array $proxy = [])
@@ -62,15 +61,16 @@ $api->getCustomizedFees(array $queries, array $proxy = [])
 $api->getClosedUserOffers(array $queries = [], array $proxy = [])
 
 // Buy items
-$api->getOffersByTitle(array $queries, array $proxy = [])
+$api->getOffersByTitle(array $queries, array $proxy = []) ️️❗️// Deprecated old endpoint
 $api->getTargetsByTitle(string $gameId, string $title, array $proxy = [])
 $api->getAggregatedPrices(array $queries, array $proxy = [])
-$api->getAggregatedPricesV2(array $postParams, array $proxy = [])
+$api->getAggregatedPricesV2(array $postParams, array $proxy = []) ️️❇️// New endpoint
 $api->getUserTargets(array $queries = [], array $proxy = []) ️️❗️// Deprecated old endpoint
-$api->getUserTargetsV2(array $queries = [], array $proxy = [])
+$api->getUserTargetsV2(array $queries = [], array $proxy = []) ️️❇️// New endpoint
 $api->getClosedUserTargets(array $queries = [], array $proxy = [])
 $api->createUserTargets(array $postParams, array $proxy = [])
 $api->deleteUserTargets(array $postParams, array $proxy = [])
+$api->getMarketplaceOffers(array $postParams, array $proxy = []) ️️❇️// New endpoint
 $api->buyOffers(array $patchParams, array $proxy = [])
 
 // Aggregator

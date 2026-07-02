@@ -24,6 +24,7 @@ use DMarketAuthApi\Requests\Fee;
 use DMarketAuthApi\Requests\History;
 use DMarketAuthApi\Requests\LastSales;
 use DMarketAuthApi\Requests\MarketItems;
+use DMarketAuthApi\Requests\MarketplaceOffers;
 use DMarketAuthApi\Requests\OffersByTitle;
 use DMarketAuthApi\Requests\SyncUserInventory;
 use DMarketAuthApi\Requests\TargetsByTitle;
@@ -34,6 +35,7 @@ use DMarketAuthApi\Requests\UserInventory;
 use DMarketAuthApi\Requests\UserInventoryV2;
 use DMarketAuthApi\Requests\UserItems;
 use DMarketAuthApi\Requests\UserOffers;
+use DMarketAuthApi\Requests\UserOffersV2;
 use DMarketAuthApi\Requests\UserProfile;
 use DMarketAuthApi\Requests\UserTargets;
 use DMarketAuthApi\Requests\UserTargetsV2;
@@ -112,6 +114,16 @@ class DMarketAuthApi
     public function getUserOffers(array $queries = [], array $proxy = [])
     {
         $class = new UserOffers($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function getUserOffersV2(array $queries = [], array $proxy = [])
+    {
+        $class = new UserOffersV2($queries);
 
         return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
@@ -366,6 +378,16 @@ class DMarketAuthApi
         $class = new DeleteUserTargets();
 
         return $class->call($this->publicKey, $this->secretKey, $postParams, $this->detailed, $proxy)->response();
+    }
+
+    /**
+     * @throws \SodiumException
+     */
+    public function getMarketplaceOffers(array $queries, array $proxy = [])
+    {
+        $class = new MarketplaceOffers($queries);
+
+        return $class->call($this->publicKey, $this->secretKey, $this->detailed, $proxy)->response();
     }
 
     /**
